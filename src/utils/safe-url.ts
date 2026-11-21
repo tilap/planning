@@ -1,0 +1,12 @@
+/** Returns the URL if it is an http(s) URL, otherwise undefined. */
+export function safeHttpUrl(value: string | undefined): string | undefined {
+	if (!value) return undefined;
+	try {
+		const url = new URL(value);
+		return url.protocol === "http:" || url.protocol === "https:"
+			? url.toString()
+			: undefined;
+	} catch {
+		return undefined;
+	}
+}

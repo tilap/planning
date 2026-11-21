@@ -1,0 +1,16 @@
+{
+	"plugins": [
+		{
+			"id": "project-docs",
+			"source": "github:tilap/pinkpuma-toolbelt",
+			"plugin": "project-docs",
+			"ref": "project-docs-v0.2.0"
+		},
+		{
+			"id": "ui-ux-pro-max-skill",
+			"source": "github:nextlevelbuilder/ui-ux-pro-max-skill",
+			"ref": "v2.15.0",
+			"skills": ["ui-styling", "ui-ux-pro-max"]
+		}
+	]
+}

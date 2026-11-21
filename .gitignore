@@ -1,0 +1,27 @@
+node_modules
+.next
+.env
+.env.local
+*.tsbuildinfo
+next-env.d.ts
+test-results
+playwright-report
+.dev-fake-events.local.json
+.vitest
+
+# >>> @toolmesh/agent-deck (managed: rewritten by agent-deck install)
+.ai/installed/
+.ai/current
+ai-plugin.local.json
+.cursor/rules/agent-deck-profile.mdc
+/.claude/plugins/project-docs
+/.claude/plugins/ui-ux-pro-max-skill
+/.claude/skills/project-docs
+/.claude/skills/ui-styling
+/.claude/skills/ui-ux-pro-max
+/.cursor/plugins/project-docs
+/.cursor/plugins/ui-ux-pro-max-skill
+/.cursor/skills/project-docs
+/.cursor/skills/ui-styling
+/.cursor/skills/ui-ux-pro-max
+# <<< @toolmesh/agent-deck

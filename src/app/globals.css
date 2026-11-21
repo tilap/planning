@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+/*
+ * Warm paper and ink for a home planner.
+ * Role names only. Calendar colors stay data (inline style), not tokens.
+ * The lint plugin does not see this file: keep every visual value in @theme.
+ */
+@theme {
+	--color-*: initial;
+	--color-canvas: #f4efe6;
+	--color-surface: #fffdf8;
+	--color-fg: #1c1917;
+	--color-fg-muted: #57534e;
+	/* Dims the page behind a panel or sheet: dark in every theme, never the text color. */
+	--color-scrim: rgb(0 0 0 / 0.5);
+	--color-accent: #8f3d1b;
+	--color-accent-fg: #fffdf8;
+	--color-accent-soft: #f3e4d6;
+	--color-line: #e4d8c8;
+	--color-track: #cbbba6;
+	--color-danger: #b42318;
+	--color-danger-fg: #fffdf8;
+
+	--spacing-touch: 44px;
+	--spacing-time: 72px;
+	--text-field: 16px;
+
+	--font-sans: var(--font-body-family), ui-sans-serif, system-ui, sans-serif;
+	--font-display: var(--font-display-family), ui-serif, Georgia, serif;
+
+	--radius-card: 1rem;
+	--radius-control: 0.625rem;
+	--radius-tag: 0.1875rem;
+	--radius-pill: 999px;
+
+	--shadow-raised:
+		0 1px 2px rgb(28 25 23 / 0.05), 0 12px 28px rgb(28 25 23 / 0.08);
+
+	--shadow-sheet: 0 -8px 32px rgb(0 0 0 / 0.25);
+
+	--animate-slide-in: slide-in 180ms ease-out;
+	--animate-slide-up: slide-up 220ms ease-out;
+	--animate-fade-in: fade-in 150ms ease-out;
+	--animate-float: float 2.4s ease-in-out infinite alternate;
+	--animate-fade-out: fade-out 150ms ease-in forwards;
+	--animate-slide-in-left: slide-in-left 180ms ease-out;
+	--animate-slide-out: slide-out 180ms ease-in forwards;
+	--animate-slide-out-left: slide-out-left 180ms ease-in forwards;
+	--animate-notice-shake: notice-shake 650ms ease-out;
+
+	@keyframes notice-shake {
+		0% {
+			opacity: 0;
+			transform: translateY(-1.5rem);
+		}
+
+		25% {
+			opacity: 1;
+			transform: translateY(0);
+		}
+
+		40% {
+			transform: translateX(-0.5rem);
+		}
+
+		55% {
+			transform: translateX(0.5rem);
+		}
+
+		70% {
+			transform: translateX(-0.3rem);
+		}
+
+		85% {
+			transform: translateX(0.2rem);
+		}
+
+		100% {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-in {
+		from {
+			transform: translateX(100%);
+		}
+
+		to {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-up {
+		from {
+			transform: translateY(100%);
+		}
+
+		to {
+			transform: translateY(0);
+		}
+	}
+
+	@keyframes fade-in {
+		from {
+			opacity: 0;
+		}
+
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes float {
+		from {
+			transform: translateY(0);
+		}
+
+		to {
+			transform: translateY(-1rem);
+		}
+	}
+
+	@keyframes fade-out {
+		from {
+			opacity: var(--drag-opacity, 1);
+		}
+
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes slide-in-left {
+		from {
+			transform: translateX(-100%);
+		}
+
+		to {
+			transform: translateX(0);
+		}
+	}
+
+	@keyframes slide-out {
+		from {
+			transform: translateX(var(--drag, 0px));
+		}
+
+		to {
+			transform: translateX(100%);
+		}
+	}
+
+	@keyframes slide-out-left {
+		from {
+			transform: translateX(var(--drag, 0px));
+		}
+
+		to {
+			transform: translateX(-100%);
+		}
+	}
+}
+
+/*
+ * The theme is read from the device after the first paint, so its colors
+ * change a moment later: they ease in. A gradient cannot transition, so it
+ * sits on a fixed layer behind the page that fades in or out.
+ */
+html {
+	/*
+	 * The flat color behind everything: seen when the page is pulled past its
+	 * ends and, copied into the theme-color meta, in the phone's status bar.
+	 */
+	--color-page: var(--color-canvas);
+	background-color: var(--color-page);
+	/* The scrollbar's room stays when a panel locks the scroll, so nothing shifts. */
+	scrollbar-gutter: stable;
+	color: var(--color-fg);
+	color-scheme: light dark;
+	transition:
+		background-color 400ms ease,
+		color 400ms ease;
+}
+
+html::before {
+	content: "";
+	position: fixed;
+	inset: 0;
+	/* The tallest viewport, so the layer still covers the page when a phone's address bar folds. */
+	min-height: 100lvh;
+	z-index: -1;
+	background: var(--page-background, none);
+	opacity: 0;
+	transition: opacity 400ms ease;
+}
+
+html[data-palette="violet"]::before {
+	opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html,
+	html::before {
+		transition: none;
+	}
+}
+
+/*
+ * Same tokens, warm dark values. Explicit "light" keeps the theme above.
+ * Explicit "dark" applies even when the system is light.
+ */
+html[data-theme="dark"] {
+	color-scheme: dark;
+	--color-canvas: #1f1a16;
+	--color-surface: #2a241e;
+	--color-fg: #f7f1e8;
+	--color-fg-muted: #b7a592;
+	--color-accent: #f0b090;
+	--color-accent-fg: #1f1a16;
+	--color-accent-soft: #3f2e24;
+	--color-line: #463e36;
+	--color-track: #6a5b4c;
+	--color-danger: #ffb4ab;
+	--color-danger-fg: #1f1a16;
+	--shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+	html:not([data-theme="light"]):not([data-palette]) {
+		color-scheme: dark;
+		--color-canvas: #1f1a16;
+		--color-surface: #2a241e;
+		--color-fg: #f7f1e8;
+		--color-fg-muted: #b7a592;
+		--color-accent: #f0b090;
+		--color-accent-fg: #1f1a16;
+		--color-accent-soft: #3f2e24;
+		--color-line: #463e36;
+		--color-track: #6a5b4c;
+		--color-danger: #ffb4ab;
+		--color-danger-fg: #1f1a16;
+		--shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px rgb(0 0 0 / 0.45);
+	}
+}
+
+/*
+ * Color palettes, always dark: they replace the paper tokens whatever the
+ * appearance. Violet also paints a gradient behind the page, so its canvas
+ * and surface are translucent.
+ */
+html[data-palette="violet"] {
+	color-scheme: dark;
+	/* The first color of the gradient, the one under the notch. */
+	--color-page: #1a1048;
+	--page-background: linear-gradient(
+		165deg,
+		#1a1048 0%,
+		#4b0f6e 55%,
+		#2c0f3a 100%
+	);
+	--color-canvas: rgb(26 14 58 / 0.45);
+	--color-surface: rgb(52 26 92 / 0.92);
+	--color-fg: #f5eefc;
+	--color-fg-muted: #c2add8;
+	--color-accent: #e0a8ff;
+	--color-accent-fg: #1a1048;
+	--color-accent-soft: rgb(224 168 255 / 0.18);
+	--color-line: rgb(255 255 255 / 0.14);
+	--color-track: #6b4f93;
+	--color-danger: #ffb4ab;
+	--color-danger-fg: #1a1048;
+	--shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+html[data-palette="rose"] {
+	color-scheme: dark;
+	--color-canvas: #231419;
+	--color-surface: #301c23;
+	--color-fg: #fbeef2;
+	--color-fg-muted: #c9a3b0;
+	--color-accent: #f4a3bd;
+	--color-accent-fg: #231419;
+	--color-accent-soft: #4a2634;
+	--color-line: #4c303a;
+	--color-track: #75505e;
+	--color-danger: #ffb4ab;
+	--color-danger-fg: #231419;
+	--shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+html[data-palette="gold"] {
+	color-scheme: dark;
+	--color-canvas: #1d1810;
+	--color-surface: #292117;
+	--color-fg: #f8f1e0;
+	--color-fg-muted: #bfae8a;
+	--color-accent: #e6c26a;
+	--color-accent-fg: #1d1810;
+	--color-accent-soft: #3d3118;
+	--color-line: #463c28;
+	--color-track: #6e5f3c;
+	--color-danger: #ffb4ab;
+	--color-danger-fg: #1d1810;
+	--shadow-raised: 0 1px 2px rgb(0 0 0 / 0.4), 0 12px 28px rgb(0 0 0 / 0.45);
+}
+
+body {
+	margin: 0;
+	padding: env(safe-area-inset-top) env(safe-area-inset-right)
+		env(safe-area-inset-bottom) env(safe-area-inset-left);
+}

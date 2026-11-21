@@ -1,0 +1,67 @@
+{
+  "lockfileVersion": 1,
+  "writeAgentsMd": true,
+  "plugins": [
+    {
+      "id": "project-docs",
+      "request": {
+        "id": "project-docs",
+        "source": "github:tilap/pinkpuma-toolbelt",
+        "plugin": "project-docs",
+        "ref": "project-docs-v0.2.0"
+      },
+      "resolved": {
+        "type": "git",
+        "url": "https://github.com/tilap/pinkpuma-toolbelt.git",
+        "sha": "c8cbf45d0f6a23d8b329b3ca86f7107edea7f491"
+      },
+      "integrity": "sha256-d8ad0c0b51fa838259ef677bc82aff881053687d72fed04e5085e07b03297299",
+      "components": {
+        "skills": [
+          "project-docs"
+        ],
+        "agents": [],
+        "commands": [],
+        "rules": [],
+        "hooks": false,
+        "mcp": []
+      },
+      "agentsSnippets": [
+        {
+          "skill": "project-docs",
+          "body": "- **Code change.** If the `project-docs` skill is available, follow it in the same task and update the docs that cover what changed. Do not wait for a separate request to update the documentation."
+        }
+      ]
+    },
+    {
+      "id": "ui-ux-pro-max-skill",
+      "request": {
+        "id": "ui-ux-pro-max-skill",
+        "source": "github:nextlevelbuilder/ui-ux-pro-max-skill",
+        "ref": "v2.15.0",
+        "skills": [
+          "ui-styling",
+          "ui-ux-pro-max"
+        ]
+      },
+      "resolved": {
+        "type": "git",
+        "url": "https://github.com/nextlevelbuilder/ui-ux-pro-max-skill.git",
+        "sha": "a38d04c3d5c298c851dbe5e6ee1965ee3de42cb5"
+      },
+      "integrity": "sha256-5ceb62312a39e46f6bc99266fa6479bdf99d11c4b17b7f3b7494de0d9485be77",
+      "components": {
+        "skills": [
+          "ui-styling",
+          "ui-ux-pro-max"
+        ],
+        "agents": [],
+        "commands": [],
+        "rules": [],
+        "hooks": false,
+        "mcp": []
+      },
+      "agentsSnippets": []
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+	"files": {
+		"includes": [
+			"**",
+			"!.next",
+			"!.claude",
+			"!.vitest",
+			"!node_modules",
+			"!pnpm-lock.yaml",
+			"!ai-plugin.lock.json",
+			"!**/*.md",
+			"!public/sw.js"
+		]
+	},
+	"formatter": { "enabled": true, "indentStyle": "tab" },
+	"linter": {
+		"enabled": true,
+		"rules": { "preset": "recommended", "style": { "noProcessEnv": "error" } }
+	},
+	"overrides": [
+		{
+			"includes": ["src/env.ts"],
+			"linter": { "rules": { "style": { "noProcessEnv": "off" } } }
+		}
+	],
+	"css": { "parser": { "tailwindDirectives": true } },
+	"assist": { "actions": { "source": { "organizeImports": "on" } } },
+	"plugins": ["./.biome/plugins/no-raw-design-values.grit"]
+}
