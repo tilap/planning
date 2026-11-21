@@ -21,7 +21,7 @@ You need:
 - a Google account that owns the calendars: the app only accepts the accounts listed in `ALLOWED_EMAILS` and the ones an admin adds in the app;
 - optionally, a Neon Postgres database, for `DATABASE_URL`: without it, only the admins of `ALLOWED_EMAILS` can sign in and the settings have no Administrator section;
 - a Vercel account connected to the GitHub repository;
-- Node 24 and pnpm for the local run (see [DEVELOPMENT.md](DEVELOPMENT.md)).
+- Node 26 and pnpm for the local run (see [DEVELOPMENT.md](DEVELOPMENT.md)).
 
 ## 1. Choose the address of the app
 
@@ -143,7 +143,7 @@ Load the page once, then cut the network in the browser's developer tools and re
 
 1. [vercel.com/new](https://vercel.com/new) > import your fork or copy of the repository.
 2. Project name: anything (for example `planning`). Framework preset: **Next.js** (detected). Leave the root directory and the build command as they are.
-3. **Node.js version**: the repository declares Node 24 in `package.json`; check **Settings > General > Node.js Version** shows 24.x.
+3. **Node.js version**: the repository declares Node 26 in `package.json`; check **Settings > General > Node.js Version** shows 26.x.
 4. **Environment Variables** (Production), the same six variables as locally, with production values:
 
    | Variable | Value |

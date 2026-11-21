@@ -25,3 +25,4 @@ ai-plugin.local.json
 /.cursor/skills/ui-styling
 /.cursor/skills/ui-ux-pro-max
 # <<< @toolmesh/agent-deck
+.vercel
