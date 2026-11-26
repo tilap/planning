@@ -40,8 +40,8 @@ importers:
         specifier: 4.3.5
         version: 4.3.5
       '@toolmesh/agent-deck':
-        specifier: 0.1.1
-        version: 0.1.1
+        specifier: 0.1.2
+        version: 0.1.2
       '@types/node':
         specifier: 26.6.6
         version: 26.6.6
@@ -729,8 +729,8 @@ packages:
   '@tailwindcss/postcss@4.3.5':
     resolution: {integrity: sha512-FAV37Tlx9wBiT/hkfgVD0Q6CWsP2oUX3lf28nrfjW8+ksILjnpuFulUqWDfNR4/ZiEHHDRBX8DUTzD1Rys687A==}
 
-  '@toolmesh/agent-deck@0.1.1':
-    resolution: {integrity: sha512-tRqirXlW3ml9UbpOTAYWwE8c/Ubak2Ban3dY8s9LGJij14JhDdNmMJk2Z+d0LEZonwAOixEvO7tVbK863AQJdw==}
+  '@toolmesh/agent-deck@0.1.2':
+    resolution: {integrity: sha512-RcjC+OKq5zs66MWkTjJWqGRTr1dPCs5CwFlbSG2nHE5KYWLO7vcI9VIVer2kEkRsOJ+ms3BR2RdkqUcE4FyWCw==}
     engines: {node: '>=22.14'}
     hasBin: true
 
@@ -1824,7 +1824,7 @@ snapshots:
       postcss: 8.5.33
       tailwindcss: 4.3.5
 
-  '@toolmesh/agent-deck@0.1.1': {}
+  '@toolmesh/agent-deck@0.1.2': {}
 
   '@tybys/wasm-util@0.10.5':
     dependencies:
